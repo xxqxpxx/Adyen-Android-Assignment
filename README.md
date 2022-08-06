@@ -38,3 +38,20 @@ We are interested in:
 **OPTIONAL**
 * Allow user to save/persist APODs that they like and pin them to the top of the summary list screen.
 * The UI/UX is not a strict requirement, feel free to make it pixel perfect with animations if you please.
+
+
+
+## Solution Steps:
+step 1:
+* add dependency injection (hilt)
+* refactor old network service and model to clean arch.
+* fix unit tests after refactoring
+* add skeleton code/SDKs to be used later
+
+step 2:
+* design UI for Planet List and Planet Item
+* implement PlanetListActivity & view model 
+* handle data and adapter
+* handle progress & error 
+
+
