@@ -18,17 +18,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/transparent"
+        android:fitsSystemWindows="false"
+        android:layoutDirection="locale"
+        android:minHeight="?attr/actionBarSize"
+        app:elevation="1dp"
         android:id="@+id/txt_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/our_universe"
-        android:textColor="@color/white"
-        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:text="@string/our_universe"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            />
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+
 
     <TextView
         android:id="@+id/txt_myfavourites"
@@ -68,12 +85,11 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="500dp"
-        tools:itemCount="10"
         android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_latest"
+        tools:itemCount="10"
         tools:listitem="@layout/item_planet" />
 
 

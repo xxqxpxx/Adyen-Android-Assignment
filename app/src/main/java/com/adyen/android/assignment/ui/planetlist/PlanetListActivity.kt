@@ -1,6 +1,5 @@
 package com.adyen.android.assignment.ui.planetlist
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -39,6 +38,7 @@ class PlanetListActivity : BaseActivity<ActivityPlanetListBinding>() {
 
 
     private fun initListeners() {
+
     } // fun of initListeners
 
     private fun initPlanetList() {
@@ -80,8 +80,8 @@ class PlanetListActivity : BaseActivity<ActivityPlanetListBinding>() {
         }
     } // weatherDataObserver
 
-    private fun onSuccess(data: List<AstronomyResponse>) {
+    private fun onSuccess(data: List<AstronomyResponse>?) {
         handleProgress(isLoading = false)
-        planetAdapter.submitList(data ?: arrayListOf())
+        planetAdapter.submitList( data ?: arrayListOf())
     } // fun of onSuccess
 }
