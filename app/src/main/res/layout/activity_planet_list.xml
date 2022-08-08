@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingStart="16dp"
-    android:paddingEnd="16dp"
+    android:background="@color/on_background"
     tools:context=".ui.planetlist.PlanetListActivity">
 
     <ProgressBar
@@ -20,41 +19,40 @@
 
 
     <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/txt_title"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="20dp"
         android:background="@color/transparent"
         android:fitsSystemWindows="false"
         android:layoutDirection="locale"
         android:minHeight="?attr/actionBarSize"
         app:elevation="1dp"
-        android:id="@+id/txt_title"
-        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            style="@style/TextAppearance.AppTheme.HeadLine2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:text="@string/our_universe"
-            android:textSize="20sp"
-            android:textColor="@color/white"
             android:gravity="center"
-            />
+            android:text="@string/our_universe" />
 
     </com.google.android.material.appbar.MaterialToolbar>
 
 
-
     <TextView
         android:id="@+id/txt_myfavourites"
+        style="@style/TextAppearance.AppTheme.HeadLine2"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         android:text="@string/my_favourties"
-        android:textSize="15sp"
-        android:textStyle="bold"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_title" />
@@ -64,6 +62,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:paddingStart="16dp"
+
+        android:paddingEnd="16dp"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,38 +72,61 @@
 
 
     <TextView
-        android:id="@+id/txt_latest"
+        android:id="@+id/txt_planet_title"
+        style="@style/TextAppearance.AppTheme.HeadLine2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:paddingStart="16dp"
+
+        android:paddingEnd="16dp"
         android:text="@string/latest"
-        android:textSize="15sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rcv_favourites" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_latest"
-        tools:itemCount="10"
-        tools:listitem="@layout/item_planet" />
 
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/extended_fab"
+        style="@style/TextAppearance.AppTheme.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="35dp"
         android:contentDescription="@string/reorder_list"
         android:text="@string/reorder_list"
         app:icon="@drawable/ic_reorder"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+<!--
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/extended_fab"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_planet_title"
+         />
+    -->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:id="@+id/recyclerView"
+        app:layout_constrainedHeight="true"
+        tools:listitem="@layout/item_planet"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
-package com.adyen.android.assignment.ui.planetlist
+package com.adyen.android.assignment.ui.planetdetails
 
+import android.graphics.drawable.Drawable
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,8 +14,9 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+
 @HiltViewModel
-class PlanetListViewModel @Inject constructor(private val repository: PlanetaryRepository) :
+class PlanetDetailsViewModel @Inject constructor(private val repository: PlanetaryRepository) :
     BaseViewModel(repository) {
 
     private val TAG = "PlanetListViewModel"
@@ -22,12 +24,14 @@ class PlanetListViewModel @Inject constructor(private val repository: PlanetaryR
     private val _weatherDataObserver = MutableLiveData<ResultModel<List<AstronomyResponse>>>()
     val weatherDataObserver: LiveData<ResultModel<List<AstronomyResponse>>> = _weatherDataObserver
 
-    var  list : List<AstronomyResponse> = arrayListOf()
+
 
 
     init {
         fetchPicturesData()
     }
+
+
 
     private fun fetchPicturesData() {
         _weatherDataObserver.postValue(ResultModel.Loading(isLoading = true))
@@ -40,8 +44,6 @@ class PlanetListViewModel @Inject constructor(private val repository: PlanetaryR
                     _weatherDataObserver.postValue(ResultModel.Loading(isLoading = false))
                 } // exception
                 .collect { response ->
-
-                    list = response.body() ?: emptyList()
                     Log.i(TAG, "Response : $response")
                     _weatherDataObserver.postValue(
                         ResultModel.Success(
@@ -51,10 +53,5 @@ class PlanetListViewModel @Inject constructor(private val repository: PlanetaryR
                 } // collect
         }
     } // fun of fetchTeamMainData
-
-    fun getPlanet() : AstronomyResponse {
-        return list[0]
-    }
-
 
 } // class of WeatherViewModel

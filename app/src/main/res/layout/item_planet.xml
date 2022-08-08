@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-
     android:paddingStart="15dp"
     android:paddingEnd="15dp">
 
@@ -15,12 +14,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:paddingTop="5dp"
-
+        style="@style/TextAppearance.AppTheme.Headline3"
         android:text="Tommorrow"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/textColor"
+         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/img_planet"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,8 +30,10 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="4dp"
         android:text="33"
-        android:textColor="@color/white"
-        android:textSize="15sp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        style="@style/TextAppearance.AppTheme.Headline3"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/img_planet"

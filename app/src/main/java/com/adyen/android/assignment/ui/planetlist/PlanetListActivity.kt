@@ -38,11 +38,42 @@ class PlanetListActivity : BaseActivity<ActivityPlanetListBinding>() {
 
 
     private fun initListeners() {
+/*       var astronomyResponse = AstronomyResponse("20/20/2022"  , getString(R.string.testtext) ,
+            "https://apod.nasa.gov/apod/image/0007/ngc1850_hst.jpg", "" ,
+            "" , "the milky way" , "https://apod.nasa.gov/apod/image/0007/ngc1850_hst.jpg")
+
+
+        val myIntent = Intent(this, PlanetDetailsActivity::class.java)
+        myIntent.putExtra("planetDetails",  astronomyResponse )
+        this.startActivity(myIntent)*/
+
+/*        binding.extendedFab.setOnClickListener {
+
+        }*/
 
     } // fun of initListeners
 
     private fun initPlanetList() {
-        planetAdapter = PlanetsAdapter(context = this)
+
+        var list :ArrayList<AstronomyResponse> = arrayListOf()
+
+        var astronomyResponse = AstronomyResponse("20/20/2022"  , getString(R.string.testtext) ,
+            "https://apod.nasa.gov/apod/image/0007/ngc1850_hst.jpg", "" ,
+            "" , "the milky way" , "https://apod.nasa.gov/apod/image/0007/ngc1850_hst.jpg")
+
+        list.add(astronomyResponse)
+        list.add(astronomyResponse)
+        list.add(astronomyResponse)
+        list.add(astronomyResponse)
+        list.add(astronomyResponse)
+        list.add(astronomyResponse)
+        list.add(astronomyResponse)
+        list.add(astronomyResponse)
+        list.add(astronomyResponse)
+        list.add(astronomyResponse)
+
+
+        planetAdapter = PlanetsAdapter(list , this)
         binding.recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding.recyclerView.adapter = planetAdapter
     }// fun of initPlanetList
@@ -63,7 +94,6 @@ class PlanetListActivity : BaseActivity<ActivityPlanetListBinding>() {
         handleProgress(isLoading = false)
     } // fun of onFail*/
 
-
     private val weatherDataObserver = Observer<ResultModel<List<AstronomyResponse>>> { result ->
         lifecycleScope.launch {
             when (result) {
@@ -82,6 +112,6 @@ class PlanetListActivity : BaseActivity<ActivityPlanetListBinding>() {
 
     private fun onSuccess(data: List<AstronomyResponse>?) {
         handleProgress(isLoading = false)
-        planetAdapter.submitList( data ?: arrayListOf())
+  //      planetAdapter.submitList( data ?: arrayListOf())
     } // fun of onSuccess
 }
