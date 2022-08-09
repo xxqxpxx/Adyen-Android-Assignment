@@ -9,4 +9,7 @@
     <string name="latest">Latest</string>
     <string name="reorder_list">Reorder list</string>
     <string name="testtext">kjdsfhfs hjfsjkdfshk kjfshfdshdfsjkdfs hf hkdsfkjdfs kjdsfhfs hjfsjkdfshk kjfshfdshdfsjkdfs hf hkdsfkjkjdsfhfs hjfsjkdfshk kjfshfdshdfsjkdfs hf hkdsfkjkjdsfhfs hjfsjkdfshk kjfshfdshdfsjkdfs hf hkdsfkjkjdsfhfs hjfsjkdfshk kjfshfdshdfsjkdfs hf hkdsfkjkjdsfhfs hjfsjkdfshk kjfshfdshdfsjkdfs hf hkdsfkjkjdsfhfs hjfsjkdfshk kjfshfdshdfsjkdfs hf hkdsfkjkjdsfhfs hjfsjkdfshk kjfshfdshdfsjkdfs hf hkdsfkj</string>
+    <string name="error_title">Ooops! Something went wrong.</string>
+    <string name="error_hint">Please refresh the page and try again</string>
+    <string name="refresh">Refresh</string>
 </resources>

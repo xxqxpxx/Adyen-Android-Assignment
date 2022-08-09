@@ -1,4 +1,4 @@
-package com.adyen.android.assignment.ui.planetlist
+package com.adyen.android.assignment.ui.planetlanding
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class PlanetListViewModel @Inject constructor(private val repository: PlanetaryRepository) :
+class PlanetsLandingViewModel @Inject constructor(private val repository: PlanetaryRepository) :
     BaseViewModel(repository) {
 
     private val TAG = "PlanetListViewModel"

@@ -17,7 +17,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PlanetDetailsViewModel @Inject constructor(private val repository: PlanetaryRepository) :
-    BaseViewModel(repository) {
+    BaseViewModel(repository) { // class of WeatherViewModel
 
     private val TAG = "PlanetListViewModel"
 
@@ -54,4 +54,8 @@ class PlanetDetailsViewModel @Inject constructor(private val repository: Planeta
         }
     } // fun of fetchTeamMainData
 
-} // class of WeatherViewModel
+    fun refresh() {
+        fetchPicturesData()
+    }
+
+}

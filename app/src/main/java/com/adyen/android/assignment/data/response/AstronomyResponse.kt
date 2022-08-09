@@ -5,6 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class AstronomyResponse(
+    val copyright: String?,
     val date: String,
     val explanation: String,
     val hdurl: String,

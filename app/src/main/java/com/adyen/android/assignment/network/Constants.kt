@@ -8,7 +8,7 @@ object Constants {
 
     const val BASE_URL = BuildConfig.NASA_BASE_URL
 
-    const val getPictures = "planetary/apod?count=20&api_key=${BuildConfig.API_KEY}"
+    const val getPictures = "planetary/apod?count=5&api_key=${BuildConfig.API_KEY}"
 
 
 }
