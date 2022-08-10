@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.adyen.android.assignment.R
 import com.adyen.android.assignment.data.response.AstronomyResponse
@@ -16,7 +15,7 @@ import com.bumptech.glide.request.RequestOptions
 class PlanetsAdapter(
     private var planetList: List<AstronomyResponse>? = arrayListOf(),
     private val context: Context,
-    private val selectedInterestsLD: MutableLiveData<AstronomyResponse>
+    private val onClickListener: OnClickListener
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     fun submitList(playerList: List<AstronomyResponse>) {
@@ -30,12 +29,18 @@ class PlanetsAdapter(
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return ViewHolderPlanet(ItemPlanetBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return ViewHolderPlanet(
+            ItemPlanetBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     } // fun of onCreateViewHolder
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         planetList?.get(position)?.let {
-            (holder as ViewHolderPlanet).bind(context = context, planet = it, selectedInterestsLD)
+            (holder as ViewHolderPlanet).bind(context = context, planet = it, onClickListener)
         }
     } // fun of onBindViewHolder
 
@@ -44,7 +49,7 @@ class PlanetsAdapter(
         fun bind(
             context: Context,
             planet: AstronomyResponse,
-            onSelect: MutableLiveData<AstronomyResponse>
+            onSelect: OnClickListener
         ) {
             binding.txtPlanetName.text = planet.title
             binding.txtPlanetDate.text = planet.date
@@ -66,8 +71,13 @@ class PlanetsAdapter(
                     .into(binding.imgPlanet)
 
             binding.root.setOnClickListener {
-                onSelect.value = (planet)
+                onSelect.clickListener(planet)
             }
         } // fun of bind
     } // class of ViewHolder
+
+
+    class OnClickListener(val clickListener: (astronomyResponse: AstronomyResponse) -> Unit) {
+        fun onClick(astronomyResponse: AstronomyResponse) = clickListener(astronomyResponse)
+    }
 }

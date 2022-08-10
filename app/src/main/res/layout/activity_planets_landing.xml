@@ -45,7 +45,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
@@ -61,10 +60,9 @@
         android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
-        android:paddingStart="16dp"
+        android:paddingStart="20dp"
         android:paddingEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +72,6 @@
 
     <TextView
         android:id="@+id/txt_planet_title"
-        android:visibility="gone"
         style="@style/TextAppearance.AppTheme.HeadLine2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -1,15 +1,13 @@
 package com.adyen.android.assignment.data.repo
 
 import android.util.Log
-import com.adyen.android.assignment.base.BaseRepository
 import com.adyen.android.assignment.data.response.AstronomyResponse
 import com.adyen.android.assignment.network.ApiService
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class PlanetaryRepository @Inject constructor(private val apiService: ApiService) :
-    BaseRepository(apiService) {
+class PlanetaryRepository @Inject constructor(private val apiService: ApiService){
 
     private val TAG = "Planetary Repository"
 

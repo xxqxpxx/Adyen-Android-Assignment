@@ -15,4 +15,8 @@
     <string name="reorder_by_date">Reorder by date</string>
     <string name="apply">Apply</string>
     <string name="reset">Reset</string>
+    <string name="wrapped_text">It\'s warped.</string>
+    <string name="billion_star_text">Over 200 billion stars</string>
+    <string name="dusty_text">It\'s really dusty and gassy</string>
+    <string name="black_hole_text">Black hole at the centre.</string>
 </resources>

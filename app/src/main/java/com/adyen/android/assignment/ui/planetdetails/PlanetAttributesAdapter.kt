@@ -14,11 +14,6 @@ class PlanetAttributesAdapter(
     private val context: Context
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    fun submitList(playerList: ArrayList<Pair<String, Drawable>>) {
-        this.planetList = playerList
-        notifyDataSetChanged()
-    } // fun of submitList
-
     override fun getItemCount(): Int {
         return planetList.size
     } // fun of getItemCount
