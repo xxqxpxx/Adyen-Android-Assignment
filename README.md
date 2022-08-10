@@ -10,13 +10,13 @@ and add it to `app/local.gradle` - see `local.gradle.example` for details.
 You can verify your API key works by running the `PlanetaryServiceTest`.
 
 ## Features:
-- [ ] Create a list screen of APODs ![](screens/List Screen.png):
-  * Sanitise list to ONLY show images - NOT videos.
-- [ ] Implement ordering for APODs ![](screens/Reorder Dialog.png):
+- [DONE] Create a list screen of APODs ![](screens/List Screen.png):
+  * Sanitise list to ONLY show images - NOT videos. - DONE
+- [TODO ] Implement ordering for APODs ![](screens/Reorder Dialog.png): 
   * Order by title - ascending.
   * Order by date - descending.
-- [ ] Show a details screen with more info about a single APOD ![](screens/Detail Screen.png).
-- [ ] Implement error screens:
+- [DONE] Show a details screen with more info about a single APOD ![](screens/Detail Screen.png).
+- [DONE] Implement error screens:
   * Api error ![](screens/Error screen.png).
 
 n.b The resources folder has been updated with the appropriate colors and icons.
@@ -39,8 +39,6 @@ We are interested in:
 * Allow user to save/persist APODs that they like and pin them to the top of the summary list screen.
 * The UI/UX is not a strict requirement, feel free to make it pixel perfect with animations if you please.
 
-
-
 ## Solution Steps:
 step 1:
 * add dependency injection (hilt)
@@ -55,3 +53,13 @@ step 2:
 * handle progress & error 
 
 
+step 3:
+* implement Planet Details screen and logic
+* implement error screen 
+* 
+
+
+yet to do : 
+- Implement ordering for APODs ![](screens/Reorder Dialog.png): 
+- unit tests 
+- save/persist APODs

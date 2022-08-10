@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/on_background"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/on_background">
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
     tools:context=".ui.planetdetails.PlanetDetailsActivity">
 
     <ProgressBar
@@ -22,7 +27,8 @@
         android:id="@+id/img_planet_bg"
         android:layout_width="0dp"
         android:layout_height="0dp"
-          app:layout_constraintEnd_toEndOf="parent"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,8 +43,6 @@
         android:fitsSystemWindows="false"
         android:layoutDirection="locale"
         android:minHeight="?attr/actionBarSize"
-        app:elevation="1dp"
-        style="@style/TextAppearance.AppTheme.HeadLine2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -55,8 +59,8 @@
         android:paddingEnd="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:text="The milky way"
          app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -96,7 +100,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:text="@string/testtext"
+        android:text="sadasdssaadsdadsadas"
         android:paddingStart="16dp"
         android:paddingEnd="5dp"
         android:paddingBottom="5dp"
@@ -121,3 +125,7 @@
         tools:listitem="@layout/item_planet_attributes" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>
+

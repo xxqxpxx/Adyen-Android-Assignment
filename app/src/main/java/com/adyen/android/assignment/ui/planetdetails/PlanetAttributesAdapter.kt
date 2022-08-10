@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
 class PlanetAttributesAdapter(
-    private var planetList: ArrayList<Pair<String, Drawable>> ,
+    private var planetList: ArrayList<Pair<String, Drawable>>,
     private val context: Context
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -20,11 +20,17 @@ class PlanetAttributesAdapter(
     } // fun of submitList
 
     override fun getItemCount(): Int {
-        return planetList.size ?: 0
+        return planetList.size
     } // fun of getItemCount
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return ViewHolderPlanet(ItemPlanetAttributesBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return ViewHolderPlanet(
+            ItemPlanetAttributesBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     } // fun of onCreateViewHolder
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -37,7 +43,7 @@ class PlanetAttributesAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(context: Context, planet: Pair<String, Drawable>) {
 
-            binding.txtPlanetName .text = planet.first
+            binding.txtPlanetName.text = planet.first
 
             Glide.with(context)
                 .applyDefaultRequestOptions(RequestOptions().fitCenter())

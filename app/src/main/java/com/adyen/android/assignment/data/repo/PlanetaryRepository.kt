@@ -20,4 +20,17 @@ class PlanetaryRepository @Inject constructor(private val apiService: ApiService
             emit(response)
         }
     }
+
+    fun sortByTitle(list: List<AstronomyResponse>): Flow<List<AstronomyResponse>>{
+        return flow {
+            emit(list.sortedBy { it.title })
+        }
+    }
+
+    fun sortByDate(list: List<AstronomyResponse>): Flow<List<AstronomyResponse>>{
+        return flow {
+            emit(list.sortedBy { it.date })
+        }
+    }
+
 }

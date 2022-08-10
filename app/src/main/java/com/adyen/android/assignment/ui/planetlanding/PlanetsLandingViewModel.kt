@@ -19,31 +19,35 @@ class PlanetsLandingViewModel @Inject constructor(private val repository: Planet
 
     private val TAG = "PlanetListViewModel"
 
-    private val _weatherDataObserver = MutableLiveData<ResultModel<List<AstronomyResponse>>>()
-    val weatherDataObserver: LiveData<ResultModel<List<AstronomyResponse>>> = _weatherDataObserver
+    private val _planetsDataObserver = MutableLiveData<ResultModel<List<AstronomyResponse>>>()
+    val planetsDataObserver: LiveData<ResultModel<List<AstronomyResponse>>> = _planetsDataObserver
 
-    var  list : List<AstronomyResponse> = arrayListOf()
+    val selectedPlanetsLD = MutableLiveData<AstronomyResponse>()
 
+    var list: List<AstronomyResponse> = arrayListOf()
+    var listSortedByTitle: List<AstronomyResponse> = arrayListOf()
+    var listSortedByDate: List<AstronomyResponse> = arrayListOf()
+
+     lateinit var selectedOrderText: String
+     var selectedOrderIndex: Int = 0
 
     init {
         fetchPicturesData()
     }
 
     private fun fetchPicturesData() {
-        _weatherDataObserver.postValue(ResultModel.Loading(isLoading = true))
+        _planetsDataObserver.postValue(ResultModel.Loading(isLoading = true))
         viewModelScope.launch {
             repository.fetchPictures()
                 .catch { exception ->
                     Log.i(TAG, "Exception : ${exception.message}")
-                    _weatherDataObserver.value =
-                        ResultModel.Failure(code = getStatusCode(throwable = exception))
-                    _weatherDataObserver.postValue(ResultModel.Loading(isLoading = false))
+                    _planetsDataObserver.value = ResultModel.Failure(code = getStatusCode(throwable = exception))
+                    _planetsDataObserver.postValue(ResultModel.Loading(isLoading = false))
                 } // exception
                 .collect { response ->
-
                     list = response.body() ?: emptyList()
                     Log.i(TAG, "Response : $response")
-                    _weatherDataObserver.postValue(
+                    _planetsDataObserver.postValue(
                         ResultModel.Success(
                             data = response.body() ?: emptyList()
                         )
@@ -52,9 +56,64 @@ class PlanetsLandingViewModel @Inject constructor(private val repository: Planet
         }
     } // fun of fetchTeamMainData
 
-    fun getPlanet() : AstronomyResponse {
-        return list[0]
+    private suspend fun sortByTitle(){
+        if (listSortedByTitle.isNotEmpty()){
+            _planetsDataObserver.postValue(ResultModel.Success(data = listSortedByTitle ?: emptyList()))
+            return
+        }
+
+        repository.sortByTitle(list)
+            .catch { exception ->
+                Log.i(TAG, "Exception : ${exception.message}")
+                _planetsDataObserver.value = ResultModel.Failure(code = getStatusCode(throwable = exception))
+                _planetsDataObserver.postValue(ResultModel.Loading(isLoading = false))
+            } // exception
+            .collect { response ->
+           //     list = response ?: emptyList()
+                listSortedByTitle = response
+                Log.i(TAG, "Response : $response")
+                _planetsDataObserver.postValue(ResultModel.Success(data = response ?: emptyList())
+                )
+            } // collect
     }
 
+    private suspend fun sortByDate(){
 
-} // class of WeatherViewModel
+        if (listSortedByDate.isNotEmpty()){
+            _planetsDataObserver.postValue(ResultModel.Success(data = listSortedByDate ?: emptyList()))
+            return
+        }
+
+        repository.sortByDate(list)
+            .catch { exception ->
+                Log.i(TAG, "Exception : ${exception.message}")
+                _planetsDataObserver.value = ResultModel.Failure(code = getStatusCode(throwable = exception))
+                _planetsDataObserver.postValue(ResultModel.Loading(isLoading = false))
+            } // exception
+            .collect { response ->
+            //    list = response ?: emptyList()
+                listSortedByDate = response
+                Log.i(TAG, "Response : $response")
+                _planetsDataObserver.postValue(ResultModel.Success(data = response ?: emptyList())
+                )
+            } // collect
+    }
+
+    fun resetSort(){
+        _planetsDataObserver.postValue(ResultModel.Success(list))
+    }
+    fun sortList(index: Int) {
+        _planetsDataObserver.postValue(ResultModel.Loading(isLoading = true))
+        viewModelScope.launch {
+            if (index == 0) // sort by ttitle
+                sortByTitle()
+            else // sort by date
+                sortByDate()
+        }
+    }
+
+    fun refresh() {
+        fetchPicturesData()
+    }
+
+}
